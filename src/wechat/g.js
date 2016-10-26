@@ -6,7 +6,7 @@ module.exports = function(opts){
   return(function *(next) {
     console.log(this.query)
 
-    var token = opts.config.wechat.token
+    var token = opts.token
     var signature = this.query.signature
     var nonce = this.query.nonce
     var timestamp = this.query.timestamp
