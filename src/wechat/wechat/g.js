@@ -6,7 +6,7 @@ var util = require('./util')
 var getRawBody = require('raw-body')
 
 module.exports = function(opts) {
-  // var wechat = new Wechat(opts)
+  var wechat = new Wechat(opts)
   
   var that = this
 
@@ -39,9 +39,9 @@ module.exports = function(opts) {
         limit:'1mb',
         encoding:this.charset
       })
-
+      // parseXMLAsync 是为了把 XML 解析为 JS 对象
       var content = yield util.parseXMLAsync(data)
-
+      // formatMessage 是为了把 JS 对象解析为扁平的 JS 对象
       var message = util.formatMessage(content.xml)
 
       if (message.MsgType === 'event') {
