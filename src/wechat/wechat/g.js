@@ -33,6 +33,7 @@ module.exports = function(opts) {
         return false
       }
 
+      // 取出http的request对象里的xml信息
       var data = yield getRawBody(this.req,{
         length:this.length,
         limit:'1mb',
@@ -44,6 +45,8 @@ module.exports = function(opts) {
       var message = util.formatMessage(content.xml)
 
       console.log(message)
+
+      return success
 
       if (message.MsgType === 'event') {
         if (message.Event === 'subscribe') {
