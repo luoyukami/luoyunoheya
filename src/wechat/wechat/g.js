@@ -43,6 +43,8 @@ module.exports = function(opts) {
       // formatMessage 是为了把 JS 对象解析为扁平的 JS 对象
       var message = util.formatMessage(content.xml)
 
+      console.log(message)
+
       if (message.MsgType === 'event') {
         if (message.Event === 'subscribe') {
           var now = new Date().getTime()
