@@ -8,9 +8,8 @@ var getRawBody = require('raw-body')
 module.exports = function(opts) {
   var wechat = new Wechat(opts)
   
-  var that = this
-
   return function *(next) {
+    var that = this
     var token = opts.token
     var signature = this.query.signature
     var nonce = this.query.nonce
