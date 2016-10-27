@@ -2,11 +2,14 @@
 
 var sha1 = require('sha1')
 var Wechat = require('./wechat')
-var getRawBody = require('row-body')
+var util = require('./util')
+var getRawBody = require('raw-body')
 
 module.exports = function(opts) {
-  var wechat = new Wechat(opts)
+  // var wechat = new Wechat(opts)
   
+  var that = this
+
   return function *(next) {
     var token = opts.token
     var signature = this.query.signature
@@ -33,11 +36,29 @@ module.exports = function(opts) {
 
       var data = yield getRawBody(this.req,{
         length:this.length,
-        limit:'1mb'
+        limit:'1mb',
         encoding:this.charset
       })
 
-      console.log(data.toString())
+      var content = yield util.parseXMLAsync(data)
+
+      var message = util.formatMessage(content.xml)
+
+      if (message.MsgType === 'event') {
+        if (message.Event === 'subscribe') {
+          var now = new Date().getTime()
+
+          that.status = 200
+          that.type = 'application/xml'
+          that.body = '<xml>' +
+            '<ToUserName><![CDATA[' + message.ToUserName + ']]></ToUserName>' +
+            '<FromUserName><![CDATA[' + message.FromUserName + ']]></FromUserName>' +
+            '<CreateTime>' + now + '</CreateTime>' +
+            '<MsgType><![CDATA[text]]></MsgType>' +
+            '<Content><![CDATA[ようこそ我がせかい！]]></Content>' +
+            '</xml>'
+        }
+      }
     }
   }
 }
