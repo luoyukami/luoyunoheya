@@ -56,6 +56,8 @@ module.exports = function(opts) {
             '<MsgType><![CDATA[text]]></MsgType>' +
             '<Content><![CDATA[ようこそ我がせかい！]]></Content>' +
             '</xml>'
+
+          return
         }
       }
     }
