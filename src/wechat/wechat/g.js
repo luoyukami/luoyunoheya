@@ -52,13 +52,15 @@ module.exports = function(opts) {
           that.status = 200
           that.type = 'application/xml'
           that.body = '<xml>' +
-            '<ToUserName><![CDATA[' + message.ToUserName + ']]></ToUserName>' +
-            '<FromUserName><![CDATA[' + message.FromUserName + ']]></FromUserName>' +
-            '<CreateTime>' + now + '</CreateTime>' +
-            '<MsgType><![CDATA[text]]></MsgType>' +
-            '<Content><![CDATA[ようこそ我がせかい！]]></Content>' +
-            '</xml>'
+          '<ToUserName><![CDATA[' + message.ToUserName + ']]></ToUserName>' +
+          '<FromUserName><![CDATA[' + message.FromUserName + ']]></FromUserName>' +
+          '<CreateTime>' + now + '</CreateTime>' +
+          '<MsgType><![CDATA[text]]></MsgType>' +
+          '<Content><![CDATA[ようこそ我がせかい！]]></Content>' +
+          '</xml>'
 
+          console.log(that)
+          
           return
         }
       }
