@@ -60,6 +60,26 @@ module.exports = function(opts) {
           '</xml>'
 
           console.log(that)
+
+          return
+        }
+      }
+
+      if (message.MsgType === 'text') {
+        if (message.Content === '你好') {
+          var now = new Date().getTime()
+
+          that.status = 200
+          that.type = 'application/xml'
+          that.body = '<xml>' +
+          '<ToUserName><![CDATA[' + message.ToUserName + ']]></ToUserName>' +
+          '<FromUserName><![CDATA[' + message.FromUserName + ']]></FromUserName>' +
+          '<CreateTime>' + now + '</CreateTime>' +
+          '<MsgType><![CDATA[text]]></MsgType>' +
+          '<Content><![CDATA[ようこそ我がせかい！]]></Content>' +
+          '</xml>'
+
+          console.log(that)
           
           return
         }
