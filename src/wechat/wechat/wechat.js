@@ -1,5 +1,6 @@
 'use strict'
 
+//验证票据
 var Promise = require('bluebird')
 var request = Promise.promisify(require('request'))
 
