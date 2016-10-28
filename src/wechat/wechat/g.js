@@ -46,10 +46,11 @@ module.exports = function(opts) {
 
       console.log(message)
 
+      //拿到消息
       this.weixin = message
-
+      //改变上下文
       yield handler.call(this, next)
-
+      //外层处理完之后
       wechat.reply.call(this)
     }
   }

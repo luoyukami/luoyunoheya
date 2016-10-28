@@ -3,7 +3,7 @@
 //验证票据
 var Promise = require('bluebird')
 var request = Promise.promisify(require('request'))
-
+var util = require('./util')
 var prefix = 'https://api.weixin.qq.com/cgi-bin/'
 var api = {
   accessToken : prefix + 'token?grant_type=client_credential'
