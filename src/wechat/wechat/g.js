@@ -46,7 +46,7 @@ module.exports = function(opts) {
 
       console.log(message)
 
-      return success
+      
 
       if (message.MsgType === 'event') {
         if (message.Event === 'subscribe') {
@@ -55,8 +55,8 @@ module.exports = function(opts) {
           that.status = 200
           that.type = 'application/xml'
           that.body = '<xml>' +
-          '<ToUserName><![CDATA[' + message.ToUserName + ']]></ToUserName>' +
-          '<FromUserName><![CDATA[' + message.FromUserName + ']]></FromUserName>' +
+          '<ToUserName><![CDATA[' + message.FromUserName + ']]></ToUserName>' +
+          '<FromUserName><![CDATA[' + message.ToUserName + ']]></FromUserName>' +
           '<CreateTime>' + now + '</CreateTime>' +
           '<MsgType><![CDATA[text]]></MsgType>' +
           '<Content><![CDATA[ようこそ我がせかい！]]></Content>' +
@@ -75,8 +75,8 @@ module.exports = function(opts) {
           that.status = 200
           that.type = 'application/xml'
           that.body = '<xml>' +
-          '<ToUserName><![CDATA[' + message.ToUserName + ']]></ToUserName>' +
-          '<FromUserName><![CDATA[' + message.FromUserName + ']]></FromUserName>' +
+          '<ToUserName><![CDATA[' + message.FromUserName + ']]></ToUserName>' +
+          '<FromUserName><![CDATA[' + message.ToUserName + ']]></FromUserName>' +
           '<CreateTime>' + now + '</CreateTime>' +
           '<MsgType><![CDATA[text]]></MsgType>' +
           '<Content><![CDATA[ようこそ我がせかい！]]></Content>' +
